@@ -1,0 +1,17 @@
+<!doctype html>
+<head>
+    <title>Handwritten expression evaluator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script type="text/javascript" src="{{url_for('static',filename='drawhandle.js')}}"></script>
+</head>
+<body onload="onbodyload()">
+    <div>
+        <canvas id="drawing-canvas" width="420" height="140" style="border: 5px solid #000000;float:left;"></canvas>
+        <div id="answer">=</div>
+    </div>
+    <div>
+        <button id="clearcanvas" type="button" style="height:25px;width:100px;" onclick="clearcanvas()">clear</button>
+        <button id="calculate" type="button" style="height:25px;width:100px;" onclick="calculate()">Calculate</button>
+    </div>
+</body>
+

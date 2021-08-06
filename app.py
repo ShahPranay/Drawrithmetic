@@ -1,38 +1,23 @@
 from flask import Flask,redirect, url_for, request,flash
+from flask.json import jsonify
 from flask.templating import render_template
 from markupsafe import escape
-from inference import predict
-
-Allowed_extensions=set(['png', 'jpg', 'jpeg'])
-Upload_folder="/images/"
+from inference import predict_image
+from flask import send_from_directory
+import base64
 
 app=Flask(__name__)
-app.config['UPLOAD_FOLDER']=Upload_folder
-app.secret_key='secretkey123123123'
 
-def allowed_filename(filename):
-    return '.' in filename and filename.split('.',1)[1].lower() in Allowed_extensions
+@app.route("/predict",methods=['POST'])
+def predict():
+    img_bytes=base64.b64decode(request.form.get("img"))
+    val = predict_image(img_bytes)
+    return str(val)
 
-@app.route("/")
-def homepage():
-    return f"helo. two buttons one for uploading file one for drawing"
+# @app.route("/upload")
+# def upload():
+#     return render_template('upload.html',value=None)
 
-@app.route("/predict",methods=['GET','POST'])
-def helloworld():
-    if request.method == 'POST':
-        if "img" not in request.files:
-            flash("no file part")
-        f=request.files["img"]
-        if f and allowed_filename(f.filename):
-            img_bytes=f.read()
-            val = predict(img_bytes)
-            return render_template('upload.html',value=val)
-        else:
-            flash("Invalid file")
-    return render_template('upload.html',value=None)
-
-
-
-@app.route("/draw")
+@app.route("/",methods=['GET'])
 def draw():
-    return "<p>this is where i'll implement drawing logic</p>"
+    return render_template('draw.html')
