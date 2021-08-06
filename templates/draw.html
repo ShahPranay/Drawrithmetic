@@ -1,17 +1,44 @@
 <!doctype html>
 <head>
-    <title>Handwritten expression evaluator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script type="text/javascript" src="{{url_for('static',filename='drawhandle.js')}}"></script>
+    <style>
+        #vl{
+            pointer-events: none;
+            border-left:3px solid red;
+            height:140px;
+            position:relative;
+            left:490px;
+            top:183px;
+            z-index:2;
+        }
+        #vl2{
+            pointer-events: none;
+            border-left:3px solid red;
+            height:140px;
+            position:relative;
+            left:630px;
+            top:43px;
+            z-index:3;
+        }
+    </style>
+    <title>Drawrithmetic</title>
 </head>
 <body onload="onbodyload()">
     <div>
-        <canvas id="drawing-canvas" width="420" height="140" style="border: 5px solid #000000;float:left;"></canvas>
-        <div id="answer">=</div>
+        <div id="vl"></div>
+        <div id="vl2"></div>
+        <canvas id="drawing-canvas" width="420" height="140" style="border: 3px solid #000000;float:left;margin-top:-100px;margin-left:350px;pointer-events:auto;"></canvas>
+        <div id="answer" style="position:relative;top:-70px;left:10px;font-size:50px;pointer-events:none">=</div>
     </div>
     <div>
-        <button id="clearcanvas" type="button" style="height:25px;width:100px;" onclick="clearcanvas()">clear</button>
+        <button id="clearcanvas" type="button" style="height:25px;width:100px;position:relative;margin-left:450px" onclick="clearcanvas()">clear</button>
         <button id="calculate" type="button" style="height:25px;width:100px;" onclick="calculate()">Calculate</button>
     </div>
+    <div>
+        <a href="https://github.com/ShahPranay/Drawrithmetic.git" target="_blank">Source Code</a>
+    </div>
 </body>
-

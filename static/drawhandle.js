@@ -5,7 +5,7 @@ function onbodyload(){
 
     ctx.fillStyle="#fff";
     ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.lineWidth=4;
+    ctx.lineWidth=6;
     var hold=false,curX,curY;
     canvas.onmousedown = function(e){
         hold=true;
