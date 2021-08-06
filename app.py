@@ -21,3 +21,6 @@ def predict():
 @app.route("/",methods=['GET'])
 def draw():
     return render_template('draw.html')
+
+if __name__ == '__main__' :
+    app.run()
